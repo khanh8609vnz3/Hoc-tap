@@ -3,14 +3,26 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { FormsModule } from '@angular/forms';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+  ],
+  exports:[
+    CalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

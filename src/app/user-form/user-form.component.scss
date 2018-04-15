@@ -1,0 +1,11 @@
+:host/deep/ {
+.ui-calendar {
+    border: 1px solid #808080;
+    height: 34px;
+    width: 50%;
+    .ui-inputtext {
+      height: 100%;
+      background-color: white !important;
+    }
+  }
+}

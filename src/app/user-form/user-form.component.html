@@ -1,0 +1,23 @@
+<form #formUser="ngForm">
+  <label>Email</label>
+  <input [(ngModel)]="user.email" name="email" email>
+  <div *ngIf="formUser.controls.email?.touched && !formUser.controls.email?.valid">
+    <small translate *ngIf="formUser.controls.email?.errors.email">
+      Email sai kìa bươỉ
+    </small>
+  </div>
+  <br>
+  <br>
+  <select [(ngModel)]="user.select" name="select">
+    <option value="1">a</option>
+    <option value="2">b</option>
+    <option value="3">c</option>
+    <option value="4">d</option>
+  </select>
+  <br>
+  <br>
+  <p-calendar [(ngModel)]="user.birthday" [locale]="calendar" name="birthday" [monthNavigator]="true" [yearNavigator]="true" yearRange="{{yearRange}}"
+    dateFormat="{{dateFormat}}" inputStyleClass="form-control">
+  </p-calendar>
+  <button type="submit" (click)="onUpdate(formUser)">Update</button>
+</form>
