@@ -49,11 +49,7 @@ export class UserFormComponent implements OnInit {
     }
     console.log(userDetail);
     this.messageService.clear();
-    this.messageService.add({
-      severity: "success",
-      summary: "Title",
-      detail: "Detail"
-    });
+    this.messageService.add({severity:'error', summary:'Lỗi rùi', detail:'Lỗi rùi bưởi ơi'});
   }
 
 
