@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-user-form',
@@ -25,7 +26,9 @@ export class UserFormComponent implements OnInit {
   select: any;
   user: {};
 
-  constructor() { }
+  constructor(
+    private messageService: MessageService
+  ) { }
 
   ngOnInit() {
     this.user = {
@@ -45,6 +48,12 @@ export class UserFormComponent implements OnInit {
       userDetail.birthday = new Date(birthday).toISOString().slice(0, 10);
     }
     console.log(userDetail);
+    this.messageService.clear();
+    this.messageService.add({
+      severity: "success",
+      summary: "Title",
+      detail: "Detail"
+    });
   }
 
 
