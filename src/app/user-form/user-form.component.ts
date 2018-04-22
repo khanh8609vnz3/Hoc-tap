@@ -8,6 +8,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class UserFormComponent implements OnInit {
 
+  emailPattern: string;
+
   calendar: any = {
     firstDayOfWeek: 0,
     dayNames: ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"],
@@ -33,10 +35,11 @@ export class UserFormComponent implements OnInit {
   ngOnInit() {
     this.user = {
       email: "Khanh@gmail.com",
-      tuoi: 22,
+      tuoi: -22,
       select: "1",
       birthday: "2018-01-01",
     }
+    this.emailPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$";
   }
 
   onUpdate(formUser) {
@@ -49,7 +52,7 @@ export class UserFormComponent implements OnInit {
     }
     console.log(userDetail);
     this.messageService.clear();
-    this.messageService.add({severity:'error', summary:'Lỗi rùi', detail:'Lỗi rùi bưởi ơi'});
+    this.messageService.add({ severity: 'error', summary: 'Lỗi rùi', detail: 'Lỗi rùi bưởi ơi' });
   }
 
 

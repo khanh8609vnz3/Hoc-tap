@@ -1,13 +1,20 @@
 <form #formUser="ngForm">
   <label>Email</label>
-  <input [(ngModel)]="user.email" name="email" email>
+  <input [(ngModel)]="user.email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
   <div *ngIf="formUser.controls.email?.touched && !formUser.controls.email?.valid">
-    <small translate *ngIf="formUser.controls.email?.errors.email">
+    <small translate *ngIf="formUser.controls.email?.errors.pattern">
       Email sai kìa bươỉ
     </small>
   </div>
   <br>
   <br>
+  <label>Tuoi</label>
+  <input [(ngModel)]="user.tuoi" name="tuoi" pattern="[0-9]+">
+  <div *ngIf="!formUser.controls.tuoi?.valid">
+    <small translate *ngIf="formUser.controls.tuoi?.errors.pattern">
+      Sai tuoi
+    </small>
+  </div>
   <select [(ngModel)]="user.select" name="select">
     <option value="1">a</option>
     <option value="2">b</option>
@@ -16,8 +23,8 @@
   </select>
   <br>
   <br>
-  <p-calendar [(ngModel)]="user.birthday" [locale]="calendar" name="birthday" [monthNavigator]="true" [yearNavigator]="true" yearRange="{{yearRange}}"
-    dateFormat="{{dateFormat}}" inputStyleClass="form-control">
+  <p-calendar [(ngModel)]="user.birthday" [locale]="calendar" name="birthday" [monthNavigator]="true" [yearNavigator]="true"
+    yearRange="{{yearRange}}" dateFormat="{{dateFormat}}" inputStyleClass="form-control">
   </p-calendar>
   <button type="submit" (click)="onUpdate(formUser)">Update</button>
 </form>
