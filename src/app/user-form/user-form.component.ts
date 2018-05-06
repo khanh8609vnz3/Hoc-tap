@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { FileUpload } from 'primeng/components/fileupload/fileupload';
 
 declare var $: any;
 @Component({
@@ -9,8 +10,13 @@ declare var $: any;
 })
 export class UserFormComponent implements OnInit {
 
+  @ViewChild(FileUpload) pFileUpload: FileUpload;
+
+  file: any;
   a: boolean;
   emailPattern: string;
+  uploadedFiles: any[] = [];
+
 
   calendar: any = {
     firstDayOfWeek: 0,
@@ -59,5 +65,16 @@ export class UserFormComponent implements OnInit {
 
   click() {
     $("#calendar").click();
+  }
+
+  onSelect(event: any, form: any) {
+    this.file = event.files[0];
+    this.uploadedFiles.push(event.files[0]);
+  }
+
+  onRemove(file: any) {
+    const index = this.pFileUpload.files.indexOf(file);
+    this.pFileUpload.remove(null, index);
+    this.uploadedFiles.splice(index);
   }
 }

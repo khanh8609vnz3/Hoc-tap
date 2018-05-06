@@ -23,9 +23,30 @@
   </select>
   <br>
   <br>
-  <p-calendar id="calendar" [(ngModel)]="user.birthday" [locale]="calendar" icon="fa-pencil-square-o" [showIcon]="true" name="birthday" [monthNavigator]="true"
-    [yearNavigator]="true" yearRange="{{yearRange}}" dateFormat="{{dateFormat}}" inputStyleClass="form-control">
+  <p-calendar id="calendar" [(ngModel)]="user.birthday" [locale]="calendar" icon="fa-pencil-square-o" [showIcon]="true" name="birthday"
+    [monthNavigator]="true" [yearNavigator]="true" yearRange="{{yearRange}}" dateFormat="{{dateFormat}}" inputStyleClass="form-control">
   </p-calendar>
+  <br>
+  <br>
+  <p-fileUpload #form name="demo[]" url="./upload.php" (onSelect)="onSelect($event, form)" multiple="multiple" accept="image/*"
+    maxFileSize="10000000" [showUploadButton]="false" [showCancelButton]="false">
+    <ng-template let-file pTemplate="file">
+      <div>
+        <div class="ui-fileupload-row">
+          <div>
+            <button type="button" icon="fa-close" pButton (click)="onRemove(file)" style="background: orange"></button>
+          </div>
+          <div>
+            <img [src]="file.objectURL" width="50" />
+          </div>
+          <div>{{file.name}}</div>
+          <div>{{file.size}} bytes</div>
+        </div>
+      </div>
+    </ng-template>
+
+  </p-fileUpload>
+
   <button (click)="click();">Click</button>
   <button type="submit" (click)="onUpdate(formUser)">Update</button>
 </form>

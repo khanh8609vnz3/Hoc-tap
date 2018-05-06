@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
 import { GrowlModule } from 'primeng/growl';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { FileUploadModule } from 'primeng/fileupload';
 
 
 @NgModule({
@@ -23,11 +24,13 @@ import { MessageService } from 'primeng/components/common/messageservice';
     FormsModule,
     CalendarModule,
     BrowserAnimationsModule,
-    GrowlModule
+    GrowlModule,
+    FileUploadModule
   ],
   exports: [
     CalendarModule,
-    GrowlModule
+    GrowlModule,
+    FileUploadModule
   ],
   providers: [MessageService],
   bootstrap: [AppComponent]
