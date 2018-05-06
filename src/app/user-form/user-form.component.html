@@ -15,7 +15,7 @@
       Sai tuoi
     </small>
   </div>
-  <select [(ngModel)]="user.select" name="select">
+  <select id="select" [(ngModel)]="user.select" name="select">
     <option value="1">a</option>
     <option value="2">b</option>
     <option value="3">c</option>
@@ -23,8 +23,9 @@
   </select>
   <br>
   <br>
-  <p-calendar [(ngModel)]="user.birthday" [locale]="calendar" name="birthday" [monthNavigator]="true" [yearNavigator]="true"
-    yearRange="{{yearRange}}" dateFormat="{{dateFormat}}" inputStyleClass="form-control">
+  <p-calendar id="calendar" [(ngModel)]="user.birthday" [locale]="calendar" icon="fa-pencil-square-o" [showIcon]="true" name="birthday" [monthNavigator]="true"
+    [yearNavigator]="true" yearRange="{{yearRange}}" dateFormat="{{dateFormat}}" inputStyleClass="form-control">
   </p-calendar>
+  <button (click)="click();">Click</button>
   <button type="submit" (click)="onUpdate(formUser)">Update</button>
 </form>

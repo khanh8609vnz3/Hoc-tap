@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+declare var $: any;
 @Component({
   selector: 'app-user-form',
   templateUrl: './user-form.component.html',
@@ -8,6 +9,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class UserFormComponent implements OnInit {
 
+  a: boolean;
   emailPattern: string;
 
   calendar: any = {
@@ -55,5 +57,7 @@ export class UserFormComponent implements OnInit {
     this.messageService.add({ severity: 'error', summary: 'Lỗi rùi', detail: 'Lỗi rùi bưởi ơi' });
   }
 
-
+  click() {
+    $("#calendar").click();
+  }
 }
